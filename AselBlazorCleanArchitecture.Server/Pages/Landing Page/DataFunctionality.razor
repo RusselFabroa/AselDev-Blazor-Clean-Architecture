@@ -1,0 +1,76 @@
+﻿@page "/data-controller-api"
+@using AselBlazorCleanArchitecture.Shared.Models
+@using AselBlazorCleanArchitecture.Shared.Models.Responses
+
+<MudContainer Class="px-2">
+    <h3 class="mb-2">Models – API Driven Approach (Using Entity Framework)</h3>
+    <MudDataGrid T="EmployeeInformation" Items="EmployeeList" Loading=_isDataLoading Dense RowsPerPage="5">
+        <Columns>
+            <PropertyColumn Property="z => z.EmpId"></PropertyColumn>
+            <PropertyColumn Property="z => z.EmployeeName"></PropertyColumn>
+
+            <PropertyColumn Property="z => z.Department"></PropertyColumn>
+            <PropertyColumn Property="z => z.Position"></PropertyColumn>
+            <PropertyColumn Property="z => z.Email"></PropertyColumn>
+            <PropertyColumn Property="z => z.Salary"></PropertyColumn>
+            <PropertyColumn Property="z => z.PhoneNumber"></PropertyColumn>
+            <PropertyColumn Property="z => z.Address"></PropertyColumn>
+        </Columns>
+        <PagerContent>
+            <MudDataGridPager T="EmployeeInformation"></MudDataGridPager>
+        </PagerContent>
+    </MudDataGrid>
+    <MudStack Class="mt-5 py-2">
+        <Documentation_DataControllerAPI></Documentation_DataControllerAPI>
+    </MudStack>
+</MudContainer>
+
+@code {
+    public bool _isDataLoading { get; set; } = false;
+    public List<EmployeeInformation> EmployeeList { get; set; } = new List<EmployeeInformation>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEmployeeInformationTask();
+    }
+
+    public async Task LoadEmployeeInformationTask()
+    {
+        EmployeeList = new();
+        try
+        {
+            _isDataLoading = true;
+            // Simulate an API call to fetch employee information
+            await Task.Delay(1000);
+            var _requestData = await _http.GetFromJsonAsync<APIResponse<List<EmployeeInformation>>>("api/Asel/GetEmployeeList");
+            if (_requestData != null && _requestData.Data != null)
+            {
+                EmployeeList = _requestData.Data;
+
+                // Log success message and show snackbar notification
+                var _methodMessage = "Employee information loaded successfully.";
+                _aselLogger.LogInformation(_methodMessage);
+                _snackbar.Add(_methodMessage, Severity.Success);
+            }
+            else
+            {
+                // Handle case where no data is returned
+                _aselLogger.LogError("Failed to load employee information: No data returned from API.");
+                _snackbar.Add("Failed to load employee information: No data returned from API.", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions (e.g., log error)
+            _aselLogger.LogError($"Error loading employee information: {ex.Message}");
+            _snackbar.Add($"Error loading employee information: {ex.Message}", Severity.Error);
+            _snackbar.Add($"Verify the SystemUrl value in appsettings.json and ensure it matches your application's base URL.",
+            Severity.Info);
+
+        }
+        finally
+        {
+            _isDataLoading = false;
+        }
+    }
+}

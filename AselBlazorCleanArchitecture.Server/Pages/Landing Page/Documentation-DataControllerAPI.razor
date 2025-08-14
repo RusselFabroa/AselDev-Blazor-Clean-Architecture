@@ -1,0 +1,85 @@
+﻿@page "/documentation-data-controller-api"
+@using MudBlazor
+
+<MudPaper Class="p-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">Backend Data Flow Documentation</MudText>
+    <MudText Typo="Typo.subtitle1" GutterBottom="true">
+        This page describes how data flows from the database to the user interface in this architecture, covering DbContext, models, API controllers, and Blazor views.
+    </MudText>
+
+    <MudDivider Class="my-4" />
+
+    <MudText Typo="Typo.h6" GutterBottom="true">1. DbContext & Data Access</MudText>
+    <MudText Typo="Typo.body2">
+        The <b>DbContext</b> (e.g., <code>AppDbContextDynamic</code>) represents the database session and is responsible for querying and saving data. It is created using a factory (<code>IDBContextFactory</code>/<code>DBContextFactory</code>) to ensure proper lifetime management.
+    </MudText>
+    <MudList Dense="true" T="string">
+        <MudListItem>
+            <b>DbContext</b> defines <code>DbSet&lt;T&gt;</code> properties for each entity (e.g., <code>DbSet&lt;EmployeeInformation&gt;</code>).
+        </MudListItem>
+        <MudListItem>
+            The factory pattern allows safe creation of DbContext instances per request.
+        </MudListItem>
+    </MudList>
+
+    <MudDivider Class="my-4" />
+
+    <MudText Typo="Typo.h6" GutterBottom="true">2. Models</MudText>
+    <MudText Typo="Typo.body2">
+        Models (e.g., <code>EmployeeInformation</code>) represent the structure of your data both in the database and as objects in C#. These are used throughout the backend and sent to the frontend via API responses.
+    </MudText>
+    <MudList Dense="true" T="string">
+        <MudListItem>
+            Models are simple C# classes with properties matching database columns.
+        </MudListItem>
+        <MudListItem>
+            They are used by Entity Framework for ORM mapping.
+        </MudListItem>
+    </MudList>
+
+    <MudDivider Class="my-4" />
+
+    <MudText Typo="Typo.h6" GutterBottom="true">3. API Controllers</MudText>
+    <MudText Typo="Typo.body2">
+        API controllers (e.g., <code>AselController</code>) expose endpoints for the frontend to interact with the backend. They use the DbContext (via the factory) to fetch or modify data, then return results as API responses.
+    </MudText>
+    <MudList Dense="true" T="string">
+        <MudListItem>
+            Controllers receive HTTP requests from the frontend.
+        </MudListItem>
+        <MudListItem>
+            They use injected services (like the DbContext factory) to access data.
+        </MudListItem>
+        <MudListItem>
+            Data is returned as standardized API responses (see <code>APIResponse&lt;T&gt;</code>).
+        </MudListItem>
+    </MudList>
+
+    <MudDivider Class="my-4" />
+
+    <MudText Typo="Typo.h6" GutterBottom="true">4. Blazor Views</MudText>
+    <MudText Typo="Typo.body2">
+        Blazor components (views) call the API endpoints using <code>HttpClient</code>. The data received is bound to UI components (e.g., tables, forms) for display and interaction.
+    </MudText>
+    <MudList Dense="true" T="string">
+        <MudListItem>
+            The view (e.g., <code>DataFunctionality.razor</code>) calls the API using <code>HttpClient</code>.
+        </MudListItem>
+        <MudListItem>
+            The response data is deserialized and bound to UI elements (e.g., <code>MudDataGrid</code>).
+        </MudListItem>
+        <MudListItem>
+            Users interact with the UI, which can trigger further API calls (CRUD operations).
+        </MudListItem>
+    </MudList>
+
+    <MudDivider Class="my-4" />
+
+    <MudText Typo="Typo.h6" GutterBottom="true">Summary Diagram</MudText>
+    <MudText Typo="Typo.body2">
+        <b>Database</b> &rarr; <b>DbContext</b> &rarr; <b>Model</b> &rarr; <b>API Controller</b> &rarr; <b>API Response</b> &rarr; <b>Blazor View</b>
+    </MudText>
+    <MudText Typo="Typo.caption" Class="mt-2">
+        This flow ensures a clean separation of concerns and maintainable code.
+    </MudText>
+</MudPaper>

@@ -1,0 +1,308 @@
+﻿@using AselBlazorCleanArchitecture.Application.Interfaces
+@inject ILoggingService _logger
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="">
+    <!-- Hero Section -->
+    <MudPaper Elevation="4" Class="pa-8 mb-6">
+        <MudStack Spacing="3" AlignItems="AlignItems.Center">
+            <MudText Typo="Typo.h2" Align="Align.Center" Color="Color.Primary" GutterBottom="true">
+                🏗️ AselDev Blazor Clean Architecture
+            </MudText>
+            <MudText Typo="Typo.h5" Align="Align.Center" Color="Color.Secondary" Class="mb-3">
+                Enterprise-Ready Web Application Template
+            </MudText>
+            <MudDivider Class="my-2" />
+
+            <!-- Technology Stack -->
+            <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Dark" Class="mb-2">
+                Built With Modern Technologies
+            </MudText>
+            <MudStack Direction="Row" Spacing="2" JustifyContent="Justify.Center" Class="mb-4" Wrap="Wrap.Wrap">
+                <MudChip T="string" Color="Color.Primary" Variant="Variant.Filled" Icon="@Icons.Material.Filled.Web">
+                    Blazor Server
+                </MudChip>
+                <MudChip T="string" Color="Color.Info" Variant="Variant.Filled"
+                    Icon="@Icons.Material.Filled.DesignServices">
+                    MudBlazor UI
+                </MudChip>
+                <MudChip T="string" Color="Color.Success" Variant="Variant.Filled"
+                    Icon="@Icons.Material.Filled.Security">
+                    Authentication
+                </MudChip>
+                <MudChip T="string" Color="Color.Warning" Variant="Variant.Filled"
+                    Icon="@Icons.Material.Filled.BugReport">
+                    Serilog Logging
+                </MudChip>
+                <MudChip T="string" Color="Color.Tertiary" Variant="Variant.Filled"
+                    Icon="@Icons.Material.Filled.Storage">
+                    Entity Framework
+                </MudChip>
+            </MudStack>
+
+            <MudText Typo="Typo.body1" Align="Align.Center" Class="mb-4" Style="max-width: 700px;">
+                A production-ready template implementing Clean Architecture principles with clear separation of
+                concerns,
+                dependency injection, and modern development practices for scalable enterprise applications.
+            </MudText>
+        </MudStack>
+    </MudPaper>
+
+    <!-- Architecture Overview -->
+    <MudText Typo="Typo.h4" Color="Color.Primary" Class="mb-4" Align="Align.Center">
+        🏛️ Clean Architecture Overview
+    </MudText>
+
+    <MudGrid Class="mb-6">
+        <!-- Server Layer -->
+        <MudItem xs="12" md="6" lg="3">
+            <MudCard Elevation="3" Style="height: 100%;">
+                <MudCardContent Class="text-center">
+                    <MudAvatar Color="Color.Primary" Size="Size.Large" Class="mb-3">
+                        <MudIcon Icon="@Icons.Material.Filled.Computer" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="mb-2">Server Layer</MudText>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Blazor Server hosting with real-time SignalR connectivity
+                    </MudText>
+                    <MudList T="string" Dense="true" DisableGutters="true">
+                        <MudListItem Text="🌐 Components & Pages" />
+                        <MudListItem Text="🎮 Controllers" />
+                        <MudListItem Text="🔐 Authentication" />
+                        <MudListItem Text="⚡ Real-time Updates" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Application Layer -->
+        <MudItem xs="12" md="6" lg="3">
+            <MudCard Elevation="3" Style="height: 100%;">
+                <MudCardContent Class="text-center">
+                    <MudAvatar Color="Color.Success" Size="Size.Large" Class="mb-3">
+                        <MudIcon Icon="@Icons.Material.Filled.Settings" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h6" Color="Color.Success" Class="mb-2">Application Layer</MudText>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Business logic and application services
+                    </MudText>
+                    <MudList T="string" Dense="true" DisableGutters="true">
+                        <MudListItem Text="⚙️ Business Services" />
+                        <MudListItem Text="✅ Validators" />
+                        <MudListItem Text="🔌 Interfaces" />
+                        <MudListItem Text="📋 Application DTOs" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Infrastructure Layer -->
+        <MudItem xs="12" md="6" lg="3">
+            <MudCard Elevation="3" Style="height: 100%;">
+                <MudCardContent Class="text-center">
+                    <MudAvatar Color="Color.Warning" Size="Size.Large" Class="mb-3">
+                        <MudIcon Icon="@Icons.Material.Filled.Construction" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h6" Color="Color.Warning" Class="mb-2">Infrastructure Layer</MudText>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Data access and external integrations
+                    </MudText>
+                    <MudList T="string" Dense="true" DisableGutters="true">
+                        <MudListItem Text="🗄️ DbContext" />
+                        <MudListItem Text="📦 Repositories" />
+                        <MudListItem Text="🔄 Data Access" />
+                        <MudListItem Text="🌐 External Services" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Shared Layer -->
+        <MudItem xs="12" md="6" lg="3">
+            <MudCard Elevation="3" Style="height: 100%;">
+                <MudCardContent Class="text-center">
+                    <MudAvatar Color="Color.Info" Size="Size.Large" Class="mb-3">
+                        <MudIcon Icon="@Icons.Material.Filled.Share" />
+                    </MudAvatar>
+                    <MudText Typo="Typo.h6" Color="Color.Info" Class="mb-2">Shared Layer</MudText>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Common contracts and models
+                    </MudText>
+                    <MudList T="string" Dense="true" DisableGutters="true">
+                        <MudListItem Text="📄 DTOs" />
+                        <MudListItem Text="🏗️ Models" />
+                        <MudListItem Text="📝 Enums" />
+                        <MudListItem Text="🔧 Constants" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Dependency Flow -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Color="Color.Primary" Align="Align.Center" Class="mb-4">
+            📊 Dependency Flow
+        </MudText>
+        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="2" Class="mb-4">
+            <MudChip T="string" Color="Color.Primary" Size="Size.Large">Server</MudChip>
+            <MudIcon Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" />
+            <MudChip T="string" Color="Color.Warning" Size="Size.Large">Infrastructure</MudChip>
+            <MudIcon Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" />
+            <MudChip T="string" Color="Color.Success" Size="Size.Large">Application</MudChip>
+            <MudIcon Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" />
+            <MudChip T="string" Color="Color.Info" Size="Size.Large">Shared</MudChip>
+        </MudStack>
+        <MudAlert Severity="Severity.Info" Class="ma-2">
+            Dependencies flow inward following Clean Architecture principles. Each layer only depends on inner layers,
+            ensuring loose coupling and high maintainability.
+        </MudAlert>
+    </MudPaper>
+
+    <!-- Key Benefits -->
+    <MudText Typo="Typo.h4" Color="Color.Primary" Class="mb-4" Align="Align.Center">
+        ✨ Key Benefits
+    </MudText>
+
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="2">
+                <MudCardContent Class="pa-6 text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Architecture" Color="Color.Primary" Size="Size.Large"
+                        Class="mb-3" />
+                    <MudText Typo="Typo.h6" Class="mb-2">Clean Separation</MudText>
+                    <MudText Typo="Typo.body2">Clear boundaries between layers with well-defined responsibilities
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="2">
+                <MudCardContent Class="pa-6 text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Science" Color="Color.Success" Size="Size.Large"
+                        Class="mb-3" />
+                    <MudText Typo="Typo.h6" Class="mb-2">Highly Testable</MudText>
+                    <MudText Typo="Typo.body2">Easy unit testing with dependency injection and mocking capabilities
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="2">
+                <MudCardContent Class="pa-6 text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Speed" Color="Color.Warning" Size="Size.Large" Class="mb-3" />
+                    <MudText Typo="Typo.h6" Class="mb-2">Scalable & Maintainable</MudText>
+                    <MudText Typo="Typo.body2">Organized structure perfect for team development and long-term
+                        maintenance</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Architecture Features -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Color="Color.Primary" Align="Align.Center" Class="mb-4">
+            🔧 Architecture Features
+        </MudText>
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudList T="string">
+                    <MudListItem>
+                        <div style="display: flex; align-items: center;">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-3" />
+                            <div>
+                                <MudText Typo="Typo.subtitle2">Server-Side Rendering Only</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Dark">Pure Blazor Server implementation with
+                                    SignalR</MudText>
+                            </div>
+                        </div>
+                    </MudListItem>
+                    <MudListItem>
+                        <div style="display: flex; align-items: center;">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-3" />
+                            <div>
+                                <MudText Typo="Typo.subtitle2">Dependency Injection</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Dark">Built-in DI container with proper service
+                                    registration</MudText>
+                            </div>
+                        </div>
+                    </MudListItem>
+                    <MudListItem>
+                        <div style="display: flex; align-items: center;">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-3" />
+                            <div>
+                                <MudText Typo="Typo.subtitle2">Authentication Ready</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Dark">Pre-configured authentication and
+                                    authorization</MudText>
+                            </div>
+                        </div>
+                    </MudListItem>
+                </MudList>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudList T="string">
+                    <MudListItem>
+                        <div style="display: flex; align-items: center;">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-3" />
+                            <div>
+                                <MudText Typo="Typo.subtitle2">Logging & Monitoring</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Dark">Structured logging with Serilog
+                                    integration</MudText>
+                            </div>
+                        </div>
+                    </MudListItem>
+                    <MudListItem>
+                        <div style="display: flex; align-items: center;">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-3" />
+                            <div>
+                                <MudText Typo="Typo.subtitle2">Modern UI Components</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Dark">Material Design with MudBlazor component
+                                    library</MudText>
+                            </div>
+                        </div>
+                    </MudListItem>
+                    <MudListItem>
+                        <div style="display: flex; align-items: center;">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-3" />
+                            <div>
+                                <MudText Typo="Typo.subtitle2">Production Ready</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Dark">Optimized for deployment and scalability
+                                </MudText>
+                            </div>
+                        </div>
+                    </MudListItem>
+                </MudList>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Call to Action -->
+    <MudPaper Elevation="4" Class="pa-6 text-center">
+        <MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-3">
+            Ready to Build Something Amazing? 🚀
+        </MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            Get started with this enterprise-ready Blazor template and accelerate your development process.
+        </MudText>
+        <MudStack Direction="Row" JustifyContent="Justify.Center" Spacing="3">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large"
+                Href="https://github.com/RusselFabroa/AselDev-Blazor-Clean-Architecture.git" Target="_blank"
+                StartIcon="@Icons.Custom.Brands.GitHub">
+                View on GitHub
+            </MudButton>
+            <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Size="Size.Large"
+                StartIcon="@Icons.Material.Filled.Download">
+                Download Template
+            </MudButton>
+        </MudStack>
+    </MudPaper>
+</MudContainer>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        _logger.LogInformation("Home Initialized Successfully");
+    }
+
+
+}

@@ -1,0 +1,118 @@
+﻿@inherits LayoutComponentBase
+@using MudBlazor
+@using MudBlazor.Utilities
+@using Microsoft.AspNetCore.Components.Routing
+<MudThemeProvider  @rendermode="InteractiveServer"/>
+<MudDialogProvider @rendermode="InteractiveServer" />
+<MudSnackbarProvider @rendermode="InteractiveServer" />
+<MudPopoverProvider @rendermode="InteractiveServer" />
+<MudLayout>
+    <!-- Sidebar -->
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1" Anchor="Anchor.Start" Variant="DrawerVariant.Responsive" Class="pa-2">
+        <NavMenu />
+    </MudDrawer>
+
+    <!-- Main Content -->
+    <MudMainContent>
+        <MudAppBar Elevation="1" Style="background-color: #4C4CE4" Dense>
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+           
+            <MudText Typo="Typo.h6" Class="ml-2">@HeaderName</MudText>
+            <MudSpacer />
+            <MudMenu Dense="true" @bind-open=@_menuOpen Class="py-">
+                <ActivatorContent>
+
+                    <MudButton StartIcon="@Icons.Material.Filled.Person" EndIcon=@(_menuOpen? Icons.Material.Filled.KeyboardArrowUp : Icons.Material.Filled.KeyboardArrowDown) Style="@($"color:white;")" Edge="Edge.End"> @_authUser </MudButton>
+
+                </ActivatorContent>
+                <ChildContent>
+                    <MudStack>
+                        @if (authUserName == null)
+                        {
+                            <MudMenuItem OnClick="Login" Icon="@Icons.Material.Filled.Login" IconColor="Color.Primary">
+                                <h6>Login</h6>
+                            </MudMenuItem>
+                        }
+                        else
+                        {
+                            <MudMenuItem Icon="@Icons.Material.Filled.Lock" Class="mt-1" IconColor="Color.Primary" Disabled>
+                                <h6>Change Password</h6>
+                            </MudMenuItem>
+                            <MudMenuItem OnClick="Logout" Icon="@Icons.Material.Filled.Logout" Class="mb-1" IconColor="Color.Error">
+                                <h6>Logout</h6>
+                            </MudMenuItem>
+                        }
+
+
+                    </MudStack>
+
+                </ChildContent>
+            </MudMenu>
+            @* <MudIconButton Icon="@(_isDarkMode? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)" Color="Color.Inherit" OnClick="@ToggleTheme" /> *@
+        </MudAppBar>
+
+        <MudContainer MaxWidth="MaxWidth.False" Class="px-2">
+            <MudStack Class="rounded p-2" Style="min-height:90vh">
+            @Body
+
+            </MudStack>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _isDarkMode = false;
+    string HeaderName { get; set; } = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+        HeaderName = assembly.GetName().Name ?? "My Application";
+    }
+    private MudTheme _lightTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = Colors.Blue.Accent1,
+            Secondary = Colors.Green.Accent4
+        }
+    };
+
+    private MudTheme _darkTheme = new MudTheme()
+    {
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.Blue.Lighten1,
+            Secondary = Colors.Green.Accent2,
+            Background = Colors.Gray.Darken4,
+            Surface = Colors.Gray.Darken3,
+            TextPrimary = Colors.Shades.White
+        }
+    };
+
+    private MudTheme _currentTheme => _isDarkMode ? _darkTheme : _lightTheme;
+
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+    private void ToggleTheme() => _isDarkMode = !_isDarkMode;
+
+    public string authUserName = string.Empty;
+    public string? authUserRole = string.Empty;
+    public string _authUser = "Guest";
+    public string _fotterText = "";
+    public string _appName = "MAS GRP - DX PROJECT ©";
+    public string _appLastModified = string.Empty;
+    public string _appVersion = "string.Empty";
+    bool _menuOpen = false;
+   
+    public void Login()
+    {
+        // Implement login logic here
+    }
+
+    public void Logout()
+    {
+        // Implement login logic here
+    }
+
+}

@@ -1,0 +1,836 @@
+﻿@page "/documentation"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    
+    <!-- Page Header -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="3">
+            <MudIcon Icon="@Icons.Material.Filled.MenuBook" Size="Size.Large" Color="Color.Primary" />
+            <div>
+                <MudText Typo="Typo.h3" Color="Color.Primary" GutterBottom="true">
+                    📚 Documentation
+                </MudText>
+                <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+                    Complete guide for AselDev Blazor Clean Architecture
+                </MudText>
+            </div>
+        </MudStack>
+    </MudPaper>
+
+    <!-- Documentation Tabs -->
+    <MudTabs Elevation="4" Rounded="true" PanelClass="pa-6" Color="Color.Primary">
+        
+        <!-- Architecture Overview Tab -->
+        <MudTabPanel Text="Architecture Overview" Icon="@Icons.Material.Filled.Architecture">
+            <MudStack Spacing="4">
+                <MudText Typo="Typo.h4" Color="Color.Primary">🏗️ Clean Architecture Overview</MudText>
+                
+                <MudAlert Severity="Severity.Info" Variant="Variant.Outlined">
+                    This project follows Clean Architecture principles with clear separation of concerns and dependency inversion.
+                </MudAlert>
+
+                <MudGrid>
+                    <MudItem xs="12" md="6">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudText Typo="Typo.h6" Color="Color.Primary" Class="mb-3">📁 Project Structure</MudText>
+                                <MudList Dense="true" T="string">
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Computer" Color="Color.Primary" Class="mr-2" />
+                                            <MudText><strong>Server Layer</strong> - UI & Controllers</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Construction" Color="Color.Warning" Class="mr-2" />
+                                            <MudText><strong>Infrastructure Layer</strong> - Data Access</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Settings" Color="Color.Success" Class="mr-2" />
+                                            <MudText><strong>Application Layer</strong> - Business Logic</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Share" Color="Color.Info" Class="mr-2" />
+                                            <MudText><strong>Shared Layer</strong> - Common Models</MudText>
+                                        </div>
+                                    </MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                    <MudItem xs="12" md="6">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudText Typo="Typo.h6" Color="Color.Primary" Class="mb-3">⚡ Key Benefits</MudText>
+                                <MudList Dense="true" T="string">
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Testable & Maintainable</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Separation of Concerns</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Dependency Inversion</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Scalable Architecture</MudText>
+                                        </div>
+                                    </MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                </MudGrid>
+            </MudStack>
+        </MudTabPanel>
+
+        <!-- Serilog Logging Tab -->
+        <MudTabPanel Text="Serilog Logging" Icon="@Icons.Material.Filled.BugReport">
+            <MudStack Spacing="4">
+                <MudText Typo="Typo.h4" Color="Color.Primary">📊 Serilog Services Documentation</MudText>
+                
+                <MudAlert Severity="Severity.Success" Variant="Variant.Outlined">
+                    <strong>Structured Logging Implementation</strong><br/>
+                    Enterprise-ready logging with Serilog following Clean Architecture principles.
+                </MudAlert>
+
+                <!-- Complete Setup Guide -->
+                <MudPaper Elevation="3" Class="pa-6 mb-4">
+                    <MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-4">🔧 Complete Setup Guide</MudText>
+                    
+                    <MudStepper Color="Color.Primary" HeaderTextView="HeaderTextView.All">
+                        <MudStep Title="Install NuGet Packages" Icon="@Icons.Material.Filled.GetApp">
+                            <MudText Class="mb-3"><strong>Install these packages in your Server project:</strong></MudText>
+                            <MudPaper Class="pa-4" Elevation="1" Style="background-color: #f8f9fa;">
+                                <MudText Typo="Typo.body1" Style="font-family: 'Courier New', monospace; white-space: pre-line;">dotnet add package Serilog
+dotnet add package Serilog.AspNetCore
+dotnet add package Serilog.Settings.Configuration
+dotnet add package Serilog.Extensions.Logging
+dotnet add package Serilog.Sinks.Console
+dotnet add package Serilog.Sinks.File</MudText>
+                            </MudPaper>
+                        </MudStep>
+                        
+                        <MudStep Title="Create Interface (Application Layer)" Icon="@Icons.Material.Filled.Code">
+                            <MudText Class="mb-3"><strong>File:</strong> Application/Interfaces/ILoggingService.cs</MudText>
+                            <MudPaper Class="pa-4" Elevation="1" Style="background-color: #f8f9fa; max-height: 300px; overflow-y: auto;">
+                                <MudText Typo="Typo.body1" Style="font-family: 'Courier New', monospace; font-size: 12px; white-space: pre-wrap;">using Microsoft.Extensions.Logging;
+
+namespace AselBlazorCleanArchitecture.Application.Interfaces;
+
+public interface ILoggingService
+{
+    // Basic logging methods
+    void LogInformation(string message);
+    void LogInformation(string message, params object[] args);
+    void LogWarning(string message);
+    void LogError(Exception exception, string message);
+    void LogDebug(string message);
+    void LogCritical(string message);
+
+    // Structured logging methods
+    void LogUserAction(string userId, string action, object? additionalData = null);
+    void LogBusinessOperation(string operation, string entityType, string entityId, object? metadata = null);
+    void LogPerformance(string operation, TimeSpan duration, object? additionalData = null);
+    void LogSecurityEvent(string eventType, string userId, string details, object? metadata = null);
+    void LogSystemEvent(string eventType, string component, object? data = null);
+    
+    // Scoped logging
+    IDisposable BeginScope(string scopeName);
+    IDisposable BeginScope(Dictionary&lt;string, object&gt; properties);
+}</MudText>
+                            </MudPaper>
+                        </MudStep>
+                        
+                        <MudStep Title="Create Implementation (Infrastructure Layer)" Icon="@Icons.Material.Filled.Build">
+                            <MudText Class="mb-3"><strong>File:</strong> Infrastructure/Services/SerilogService.cs</MudText>
+                            <MudPaper Class="pa-4" Elevation="1" Style="background-color: #f8f9fa; max-height: 300px; overflow-y: auto;">
+                                <MudText Typo="Typo.body1" Style="font-family: 'Courier New', monospace; font-size: 12px; white-space: pre-wrap;">using AselBlazorCleanArchitecture.Application.Interfaces;
+using Microsoft.Extensions.Logging;
+using Serilog.Context;
+
+namespace AselBlazorCleanArchitecture.Infrastructure.Services
+{
+    public class SerilogService : ILoggingService
+    {
+        private readonly ILogger&lt;SerilogService&gt; _logger;
+
+        public SerilogService(ILogger&lt;SerilogService&gt; logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
+        public void LogInformation(string message)
+        {
+            _logger.LogInformation(message);
+        }
+
+        public void LogUserAction(string userId, string action, object? additionalData = null)
+        {
+            using (LogContext.PushProperty("UserId", userId))
+            using (LogContext.PushProperty("ActionType", "UserAction"))
+            {
+                _logger.LogInformation("User {UserId} performed action: {Action} with data: ",
+                    userId, action, additionalData);
+            }
+        }
+
+        // ... other methods
+    }
+}</MudText>
+                            </MudPaper>
+                        </MudStep>
+                        
+                        <MudStep Title="Configure Program.cs" Icon="@Icons.Material.Filled.Settings">
+                            <MudText Class="mb-3"><strong>Add Serilog configuration in Program.cs:</strong></MudText>
+                            <MudPaper Class="pa-4" Elevation="1" Style="background-color: #f8f9fa;">
+                                <MudText Typo="Typo.body1" Style="font-family: 'Courier New', monospace; white-space: pre-wrap;">using Serilog;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add Serilog - BEFORE builder.Build()
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
+// Register your services
+builder.Services.AddScoped&lt;ILoggingService, SerilogService&gt;();
+
+var app = builder.Build();
+
+// Add request logging - AFTER app is created
+app.UseSerilogRequestLogging();
+
+app.Run();</MudText>
+                            </MudPaper>
+                        </MudStep>
+                        
+                        <MudStep Title="Configure appsettings.json" Icon="@Icons.Material.Filled.Storage">
+                            <MudText Class="mb-3"><strong>Add Serilog configuration to appsettings.json:</strong></MudText>
+                            <MudPaper Class="pa-4" Elevation="1" Style="background-color: #f8f9fa; max-height: 300px; overflow-y: auto;">
+                                <MudText Typo="Typo.body1" Style="font-family: 'Courier New', monospace; font-size: 12px; white-space: pre-wrap;">{
+  "Serilog": {
+    "Using": ["Serilog.Sinks.Console", "Serilog.Sinks.File"],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console"
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "logs/app-.log",
+          "rollingInterval": "Day",
+          "retainedFileCountLimit": 7
+        }
+      }
+    ],
+    "Enrich": ["FromLogContext", "WithMachineName", "WithThreadId"]
+  }
+}</MudText>
+                            </MudPaper>
+                        </MudStep>
+                        
+                        <MudStep Title="Ready to Use!" Icon="@Icons.Material.Filled.CheckCircle">
+                            <MudAlert Severity="Severity.Success">
+                                <strong>Setup Complete! 🎉</strong><br/>
+                                Your logging service is now ready to use in components, services, and controllers.
+                            </MudAlert>
+                        </MudStep>
+                    </MudStepper>
+                </MudPaper>
+
+                <!-- Service Interfaces -->
+                <MudExpansionPanels Elevation="2">
+                    <MudExpansionPanel Text="📋 Service Interfaces">
+                        <div class="pa-4">
+                            <MudGrid>
+                                <MudItem xs="12" md="6">
+                                    <MudCard Outlined="true">
+                                        <MudCardHeader>
+                                            <CardHeaderContent>
+                                                <MudText Typo="Typo.h6" Color="Color.Primary">ILoggingService</MudText>
+                                            </CardHeaderContent>
+                                            <CardHeaderActions>
+                                                <MudChip T="string" Size="Size.Small" Color="Color.Info">Application Layer</MudChip>
+                                            </CardHeaderActions>
+                                        </MudCardHeader>
+                                        <MudCardContent>
+                                            <MudText Typo="Typo.body2" Class="mb-3">General-purpose logging interface</MudText>
+                                            <MudList Dense="true" T="string">
+                                                <MudListItem Text="✅ Basic Logging (Info, Warning, Error)" />
+                                                <MudListItem Text="✅ Structured Logging" />
+                                                <MudListItem Text="✅ User Action Tracking" />
+                                                <MudListItem Text="✅ Performance Monitoring" />
+                                                <MudListItem Text="✅ Security Event Logging" />
+                                                <MudListItem Text="✅ Scoped Logging" />
+                                            </MudList>
+                                        </MudCardContent>
+                                    </MudCard>
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudCard Outlined="true">
+                                        <MudCardHeader>
+                                            <CardHeaderContent>
+                                                <MudText Typo="Typo.h6" Color="Color.Success">IApplicationLogger</MudText>
+                                            </CardHeaderContent>
+                                            <CardHeaderActions>
+                                                <MudChip T="string" Size="Size.Small" Color="Color.Info">Application Layer</MudChip>
+                                            </CardHeaderActions>
+                                        </MudCardHeader>
+                                        <MudCardContent>
+                                            <MudText Typo="Typo.body2" Class="mb-3">Business-specific logging interface</MudText>
+                                            <MudList T="string" Dense="true">
+                                                <MudListItem Text="✅ Business Rule Violations" />
+                                                <MudListItem Text="✅ Validation Failures" />
+                                                <MudListItem Text="✅ Service Call Tracking" />
+                                                <MudListItem Text="✅ Data Access Logging" />
+                                                <MudListItem Text="✅ External API Monitoring" />
+                                                <MudListItem Text="✅ Cache Operations" />
+                                            </MudList>
+                                        </MudCardContent>
+                                    </MudCard>
+                                </MudItem>
+                            </MudGrid>
+                        </div>
+                    </MudExpansionPanel>
+
+                    <MudExpansionPanel Text="🔧 Implementation Services">
+                        <div class="pa-4">
+                            <MudGrid>
+                                <MudItem xs="12" md="6">
+                                    <MudCard Outlined="true">
+                                        <MudCardHeader>
+                                            <CardHeaderContent>
+                                                <MudText Typo="Typo.h6" Color="Color.Warning">SerilogService</MudText>
+                                            </CardHeaderContent>
+                                            <CardHeaderActions>
+                                                <MudChip T="string" Size="Size.Small" Color="Color.Warning">Infrastructure Layer</MudChip>
+                                            </CardHeaderActions>
+                                        </MudCardHeader>
+                                        <MudCardContent>
+                                            <MudText Typo="Typo.body2" Class="mb-3">Serilog implementation of ILoggingService</MudText>
+                                            <MudText Typo="Typo.caption" Color="Color.Dark">
+                                                <strong>Location:</strong> Infrastructure/Services/SerilogService.cs
+                                            </MudText>
+                                        </MudCardContent>
+                                    </MudCard>
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudCard Outlined="true">
+                                        <MudCardHeader>
+                                            <CardHeaderContent>
+                                                <MudText Typo="Typo.h6" Color="Color.Warning">ApplicationLoggingService</MudText>
+                                            </CardHeaderContent>
+                                            <CardHeaderActions>
+                                                <MudChip T="string" Size="Size.Small" Color="Color.Warning">Infrastructure Layer</MudChip>
+                                            </CardHeaderActions>
+                                        </MudCardHeader>
+                                        <MudCardContent>
+                                            <MudText Typo="Typo.body2" Class="mb-3">Business logging implementation</MudText>
+                                            <MudText Typo="Typo.caption" Color="Color.Dark">
+                                                <strong>Location:</strong> Infrastructure/Services/ApplicationLoggingService.cs
+                                            </MudText>
+                                        </MudCardContent>
+                                    </MudCard>
+                                </MudItem>
+                            </MudGrid>
+                        </div>
+                    </MudExpansionPanel>
+
+                    <MudExpansionPanel Text="📦 Required NuGet Packages">
+                        <div class="pa-4">
+                            <MudAlert Severity="Severity.Info" Class="mb-3">
+                                Install these packages in your <strong>Server</strong> project:
+                            </MudAlert>
+                            <MudStack Spacing="2">
+                                <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined">Serilog</MudChip>
+                                <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined">Serilog.AspNetCore</MudChip>
+                                <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined">Serilog.Settings.Configuration</MudChip>
+                                <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined">Serilog.Extensions.Logging</MudChip>
+                                <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined">Serilog.Sinks.Console</MudChip>
+                                <MudChip T="string" Color="Color.Success" Variant="Variant.Outlined">Serilog.Sinks.File</MudChip>
+                            </MudStack>
+                        </div>
+                    </MudExpansionPanel>
+
+                    <MudExpansionPanel Text="💻 Usage Examples">
+                        <div class="pa-4">
+                            <MudTabs Elevation="0" Rounded="false" Border="true" PanelClass="pa-4">
+                                <MudTabPanel Text="Basic Logging">
+                                    <MudPaper Class="pa-4" Elevation="1">
+                                        <MudText Typo="Typo.h6" Class="mb-3">Basic Logging Usage</MudText>
+                                        <MudText Typo="Typo.body1" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12px;">
+// In your service constructor
+private readonly ILoggingService _logger;
+
+public YourService(ILoggingService logger)
+{
+    _logger = logger;
+}
+
+// Usage examples
+_logger.LogInformation("User logged in successfully");
+_logger.LogWarning("Validation warning occurred");
+_logger.LogError(ex, "An error occurred during processing");
+                                        </MudText>
+                                    </MudPaper>
+                                </MudTabPanel>
+                                
+                                <MudTabPanel Text="Structured Logging">
+                                    <MudPaper Class="pa-4" Elevation="1">
+                                        <MudText Typo="Typo.h6" Class="mb-3">Structured Logging Usage</MudText>
+                                        <MudText Typo="Typo.body1" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12px;">
+// User actions
+_logger.LogUserAction("user123", "ProfileUpdate", 
+    new { Email = "user@example.com", Section = "Personal" });
+
+// Business operations
+_logger.LogBusinessOperation("CreateOrder", "Order", "12345", 
+    new { CustomerId = "C001", Amount = 250.00 });
+
+// Performance monitoring
+var stopwatch = Stopwatch.StartNew();
+// ... your operation ...
+stopwatch.Stop();
+_logger.LogPerformance("DatabaseQuery", stopwatch.Elapsed, 
+    new { Query = "GetUserOrders", RecordCount = 50 });
+                                        </MudText>
+                                    </MudPaper>
+                                </MudTabPanel>
+                                
+                                <MudTabPanel Text="Application Logging">
+                                    <MudPaper Class="pa-4" Elevation="1">
+                                        <MudText Typo="Typo.h6" Class="mb-3">Application-Specific Logging</MudText>
+                                        <MudText Typo="Typo.body1" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12px;">
+// In your service
+private readonly IApplicationLogger _appLogger;
+
+// Service tracking
+_appLogger.LogServiceCall("UserService", "CreateUser", dto);
+_appLogger.LogServiceResponse("UserService", "CreateUser", true, result);
+
+// Validation failures
+_appLogger.LogValidationFailure("CreateUserValidator", 
+    "Email is required, Name must be at least 2 characters", userDto);
+
+// Data access
+_appLogger.LogDataAccess("INSERT", "User", "12345", true);
+
+// External API calls
+_appLogger.LogExternalApiCall("PaymentGateway", "/api/payment", 200, 
+    TimeSpan.FromMilliseconds(450));
+                                        </MudText>
+                                    </MudPaper>
+                                </MudTabPanel>
+                                
+                                <MudTabPanel Text="Component Usage" Icon="@Icons.Material.Filled.Widgets">
+                                    <MudStack Spacing="3">
+                                        <MudAlert Severity="Severity.Info">
+                                            <strong>Using Logger in Blazor Components</strong><br/>
+                                            Inject the logging services directly into your components for user interaction tracking and error handling.
+                                        </MudAlert>
+                                        
+                                        <MudPaper Class="pa-4" Elevation="1">
+                                            <MudText Typo="Typo.h6" Class="mb-3">1. Simple Component Logging</MudText>
+                                            <MudText Typo="Typo.body1" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 11px;">
+@* @page "/users"
+@inject ILoggingService Logger
+
+&lt;MudButton @onclick="LoadUsers"&gt;Load Users&lt;/MudButton&gt;
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        Logger.LogInformation("UserComponent initialized");
+    }
+
+    private async Task LoadUsers()
+    {
+        try
+        {
+            Logger.LogInformation("Loading users from database");
+            
+            var stopwatch = Stopwatch.StartNew();
+            // Your data loading logic
+            stopwatch.Stop();
+            
+            Logger.LogPerformance("LoadUsers", stopwatch.Elapsed, 
+                new { UserCount = users.Count });
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Failed to load users");
+        }
+    }
+}
+                                            </MudText>
+                                        </MudPaper>
+                                        
+                                        <MudPaper Class="pa-4" Elevation="1">
+                                            <MudText Typo="Typo.h6" Class="mb-3">2. Advanced Component with Both Services</MudText>
+                                            <MudText Typo="Typo.code" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 11px;">
+@page "/orders/create"
+@inject ILoggingService Logger
+@inject IApplicationLogger AppLogger
+
+&lt;EditForm Model="orderModel" OnValidSubmit="CreateOrder"&gt;
+    &lt;!-- Form content --&gt;
+&lt;/EditForm&gt;
+
+@code {
+    private async Task CreateOrder()
+    {
+        try
+        {
+            // Log service call
+            AppLogger.LogServiceCall("OrderService", "CreateOrder", orderModel);
+            
+            // Validate and create order
+            if (!ValidateOrder())
+            {
+                AppLogger.LogValidationFailure("CreateOrderValidator", 
+                    "Order validation failed", orderModel);
+                return;
+            }
+            
+            // Log successful business operation
+            Logger.LogBusinessOperation("CreateOrder", "Order", orderId.ToString());
+            
+            // Log user action
+            Logger.LogUserAction("current-user", "OrderCreated", 
+                new { OrderId = orderId, Amount = orderModel.Amount });
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Failed to create order");
+            AppLogger.LogServiceResponse("OrderService", "CreateOrder", false, ex.Message);
+        }
+    }
+}
+                                            </MudText>
+                                        </MudPaper>
+                                        
+                                        <MudPaper Class="pa-4" Elevation="1">
+                                            <MudText Typo="Typo.h6" Class="mb-3">3. Component with Scoped Logging</MudText>
+                                            <MudText Typo="Typo.code" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 11px;">
+@page "/dashboard"
+@inject ILoggingService Logger
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        using var scope = Logger.BeginScope(new Dictionary&lt;string, object&gt;
+        {
+            ["Component"] = "DashboardComponent",
+            ["SessionId"] = Guid.NewGuid().ToString()
+        });
+        
+        Logger.LogSystemEvent("DashboardLoaded", "DashboardComponent");
+        await LoadDashboardData();
+    }
+
+    private async Task LoadDashboardData()
+    {
+        using var scope = Logger.BeginScope("LoadDashboardData");
+        
+        Logger.LogInformation("Loading dashboard data");
+        
+        var stopwatch = Stopwatch.StartNew();
+        // Load your data
+        stopwatch.Stop();
+        
+        Logger.LogPerformance("LoadDashboardData", stopwatch.Elapsed);
+    }
+} *@
+                                            </MudText>
+                                        </MudPaper>
+                                        
+                                        <MudPaper Class="pa-4" Elevation="1">
+                                            <MudText Typo="Typo.h6" Class="mb-3">4. Base Component for Consistent Logging</MudText>
+                                            <MudText Typo="Typo.body1" Class="mud-width-full" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 11px;">
+// Create BaseLoggingComponent.cs
+public abstract class BaseLoggingComponent : ComponentBase
+{
+    [Inject] protected ILoggingService Logger { get; set; } = default!;
+    [Inject] protected IApplicationLogger AppLogger { get; set; } = default!;
+
+    protected string ComponentName => GetType().Name;
+
+    protected override void OnInitialized()
+    {
+        Logger.LogSystemEvent("ComponentInitialized", ComponentName);
+        base.OnInitialized();
+    }
+
+    protected void LogUserAction(string action, object? data = null)
+    {
+        Logger.LogUserAction("current-user", action, new { 
+            Component = ComponentName, 
+            Data = data 
+        });
+    }
+}
+
+// Use in your components
+@* @page "/products"
+@inherits BaseLoggingComponent
+
+&lt;MudButton @onclick="LoadProducts"&gt;Load Products&lt;/MudButton&gt;
+
+@code {
+    private async Task LoadProducts()
+    {
+        LogUserAction("ProductsLoaded", new { Count = products.Count });
+        // Your logic here
+    }
+} *@
+                                            </MudText>
+                                        </MudPaper>
+                                    </MudStack>
+                                </MudTabPanel>
+                            </MudTabs>
+                        </div>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            </MudStack>
+        </MudTabPanel>
+
+        <!-- Getting Started Tab -->
+        <MudTabPanel Text="Getting Started" Icon="@Icons.Material.Filled.RocketLaunch">
+            <MudStack Spacing="4">
+                <MudText Typo="Typo.h4" Color="Color.Primary">🚀 Getting Started Guide</MudText>
+                
+                <MudStepper Linear="true" Color="Color.Primary">
+                    <MudStep Title="Setup Serilog Configuration">
+                        <MudText Class="mb-3">Configure Serilog in your Program.cs file:</MudText>
+                        <MudPaper Class="pa-4" Elevation="1">
+                            <MudText Typo="Typo.body1" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px;">
+// In Program.cs - Add BEFORE builder.Build()
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
+var app = builder.Build();
+
+// Add AFTER app is created
+app.UseSerilogRequestLogging();
+                            </MudText>
+                        </MudPaper>
+                    </MudStep>
+                    
+                    <MudStep Title="Register Services">
+                        <MudText Class="mb-3">Register logging services in dependency injection:</MudText>
+                        <MudPaper Class="pa-4" Elevation="1">
+                            <MudText Typo="Typo.body1" Style="white-space: pre-wrap; background-color: #f5f5f5; padding: 16px; border-radius: 4px;">
+// In Program.cs or ServiceCollectionExtensions
+builder.Services.AddScoped&lt;ILoggingService, SerilogService&gt;();
+builder.Services.AddScoped&lt;IApplicationLogger, ApplicationLoggingService&gt;();
+                            </MudText>
+                        </MudPaper>
+                    </MudStep>
+                    
+                    <MudStep Title="Configure appsettings.json">
+                        <MudText Class="mb-3">Add Serilog configuration to your appsettings.json:</MudText>
+                        <MudAlert Severity="Severity.Info" Class="mb-3">
+                            This configuration sets up console and file logging with proper formatting.
+                        </MudAlert>
+                    </MudStep>
+                    
+                    <MudStep Title="Start Using in Services">
+                        <MudText Class="mb-3">Inject and use the logging services in your application:</MudText>
+                        <MudAlert Severity="Severity.Success">
+                            You're ready to use enterprise-level logging in your application! 🎉
+                        </MudAlert>
+                    </MudStep>
+                </MudStepper>
+            </MudStack>
+        </MudTabPanel>
+
+        <!-- Best Practices Tab -->
+        <MudTabPanel Text="Best Practices" Icon="@Icons.Material.Filled.Stars">
+            <MudStack Spacing="4">
+                <MudText Typo="Typo.h4" Color="Color.Primary">⭐ Best Practices & Guidelines</MudText>
+                
+                <MudGrid>
+                    <MudItem xs="12" md="6">
+                        <MudCard>
+                            <MudCardHeader>
+                                <CardHeaderContent>
+                                    <MudText Typo="Typo.h6" Color="Color.Success">✅ Do's</MudText>
+                                </CardHeaderContent>
+                            </MudCardHeader>
+                            <MudCardContent>
+                                <MudList Dense="true" T="string">
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Use structured logging for better searchability</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Log business operations for audit trails</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Use appropriate log levels (Debug, Info, Warning, Error)</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Include context with scoped logging</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Class="mr-2" />
+                                            <MudText>Log performance metrics for monitoring</MudText>
+                                        </div>
+                                    </MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                    
+                    <MudItem xs="12" md="6">
+                        <MudCard>
+                            <MudCardHeader>
+                                <CardHeaderContent>
+                                    <MudText Typo="Typo.h6" Color="Color.Error">❌ Don'ts</MudText>
+                                </CardHeaderContent>
+                            </MudCardHeader>
+                            <MudCardContent>
+                                <MudList Dense="true" T="string">
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Class="mr-2" />
+                                            <MudText>Don't log sensitive data (passwords, tokens)</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Class="mr-2" />
+                                            <MudText>Don't over-log in production (avoid Debug level)</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Class="mr-2" />
+                                            <MudText>Don't log in tight loops without conditions</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Class="mr-2" />
+                                            <MudText>Don't ignore exceptions - always log them</MudText>
+                                        </div>
+                                    </MudListItem>
+                                    <MudListItem>
+                                        <div style="display: flex; align-items: center;">
+                                            <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Class="mr-2" />
+                                            <MudText>Don't use string concatenation in log messages</MudText>
+                                        </div>
+                                    </MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                </MudGrid>
+
+                <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Class="mt-4">
+                    <strong>Performance Tip:</strong> Use structured logging with proper formatting to enable efficient log analysis and monitoring in production environments.
+                </MudAlert>
+            </MudStack>
+        </MudTabPanel>
+
+        <!-- API Reference Tab -->
+        <MudTabPanel Text="API Reference" Icon="@Icons.Material.Filled.Api">
+            <MudStack Spacing="4">
+                <MudText Typo="Typo.h4" Color="Color.Primary">📖 API Reference</MudText>
+                
+                <MudAlert Severity="Severity.Info">
+                    Complete API reference for all logging service methods and their parameters.
+                </MudAlert>
+
+                <MudText Typo="Typo.h5" Color="Color.Secondary">Coming Soon...</MudText>
+                <MudText Typo="Typo.body1">
+                    This section will contain detailed API documentation for all service methods, 
+                    parameters, return types, and examples for each logging service interface.
+                </MudText>
+            </MudStack>
+        </MudTabPanel>
+
+        <!-- Troubleshooting Tab -->
+        <MudTabPanel Text="Troubleshooting" Icon="@Icons.Material.Filled.Build">
+            <MudStack Spacing="4">
+                <MudText Typo="Typo.h4" Color="Color.Primary">🔧 Troubleshooting Guide</MudText>
+                
+                <MudExpansionPanels>
+                    <MudExpansionPanel Text="Common Issues & Solutions">
+                        <div class="pa-4">
+                            <MudStack Spacing="3">
+                                <div>
+                                    <MudText Typo="Typo.h6" Color="Color.Error">❌ LogContext not found</MudText>
+                                    <MudText Typo="Typo.body2" Class="mb-2">
+                                        <strong>Solution:</strong> Add the missing using statement and NuGet package:
+                                    </MudText>
+                                    <MudChip T="string" Color="Color.Info" Size="Size.Small">using Serilog.Context;</MudChip>
+                                    <MudChip T="string" Color="Color.Warning" Size="Size.Small" Class="ml-2">Serilog.Extensions.Logging</MudChip>
+                                </div>
+                                
+                                <MudDivider />
+                                
+                                <div>
+                                    <MudText Typo="Typo.h6" Color="Color.Error">❌ Interface naming issue</MudText>
+                                    <MudText Typo="Typo.body2">
+                                        <strong>Solution:</strong> Ensure correct casing: <code>ILoggingService</code> (not IloggingService)
+                                    </MudText>
+                                </div>
+                            </MudStack>
+                        </div>
+                    </MudExpansionPanel>
+                    
+                    <MudExpansionPanel Text="Configuration Issues">
+                        <div class="pa-4">
+                            <MudText Typo="Typo.body1">
+                                Configuration troubleshooting guides will be added here...
+                            </MudText>
+                        </div>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            </MudStack>
+        </MudTabPanel>
+
+    </MudTabs>
+    
+</MudContainer>
+
+@code {
+    // Future: Add any component logic here
+    // For example: tab state management, dynamic content loading, etc.
+}

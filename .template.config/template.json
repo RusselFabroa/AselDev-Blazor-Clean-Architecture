@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "AselDev - John Russel Fabroa",
+    "classifications": [
+        "Blazor",
+        "Clean Architecture",
+        "WebApp"
+    ],
+    "identity": "AselDev.Blazor.CleanArchitecture",
+    "name": "AselDev Blazor Clean Architecture",
+    "shortName": "aselblazor",
+    "sourceName": "AselBlazorCleanArchitecture",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "preferNameDirectory": true
+}
