@@ -43,7 +43,7 @@ src/
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/YourUsername/AselDev-Blazor-Clean-Architecture.git
+git clone https://github.com/RusselFabroa/AselDev-Blazor-Clean-Architecture.git
 cd AselDev-Blazor-CleanArchitecture
 ```
 
